@@ -1,0 +1,23 @@
+{
+  "games": [
+    {
+      "id": "ds3",
+      "title": "DARK SOULS III",
+      "subtitle": "英雄グンダ / Champion Gundyr",
+      "description": "パリィ成立、致命攻撃、カメラ、VFX、操作復帰までの流れをフレーム単位で分析。",
+      "pages": [
+        {
+          "title": "英雄グンダ：パリィ成立〜致命の一撃",
+          "path": "pages/ds3/gundyr-parry.html",
+          "tags": [
+            "Parry",
+            "Riposte",
+            "Camera",
+            "VFX",
+            "Reward Design"
+          ]
+        }
+      ]
+    }
+  ]
+}

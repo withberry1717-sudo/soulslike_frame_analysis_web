@@ -1,0 +1,313 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>英雄グンダ：パリィ成立〜致命の一撃分析</title>
+  <meta name="description" content="DARK SOULS III 英雄グンダのパリィ成立から致命攻撃までをフレーム単位で分析。">
+  <link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="../../index.html"><span class="brand-mark"></span><span>Frame Analysis</span></a>
+      <nav class="nav">
+        <a href="#parry">Parry</a>
+        <a href="#critical">Critical</a>
+        <a href="#summary">Summary</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="breadcrumb">
+    <a href="../../index.html">Top</a> / DARK SOULS III / 英雄グンダ
+  </div>
+
+  <section class="page-title">
+    <div class="eyebrow">DARK SOULS III / Champion Gundyr</div>
+    <h1>英雄グンダ：パリィ成立〜致命の一撃分析</h1>
+    <p class="page-summary">
+      英雄グンダの薙ぎ払い攻撃をパリィした後、致命の一撃へ移行するまでの流れをフレーム単位で整理する。
+      攻撃の予備動作、接触、パリィVFX、敵リアクション、致命演出、出血VFX、カメラ復帰、操作可能までを分析対象にした。
+    </p>
+
+    <div class="tag-row">
+      <span class="tag">Parry</span>
+      <span class="tag">Riposte</span>
+      <span class="tag">Camera Work</span>
+      <span class="tag">VFX Timing</span>
+      <span class="tag">Reward Design</span>
+    </div>
+  </section>
+
+  <main class="main">
+    <div class="summary-panel">
+      <h2>結論</h2>
+      <p>
+        英雄グンダのパリィ〜致命攻撃は、単なるダメージ処理ではなく、
+        「読んで成功する緊張感」と「成功後にしっかり気持ちよくなる報酬時間」を分けて作っている。
+        接触、VFX、敵リアクション、カメラ、出血、ダメージ表示を数フレームずつずらすことで、
+        プレイヤーが出来事を段階的に理解できる構造になっている。
+      </p>
+    </div>
+
+    <div class="timeline-nav">
+      <a href="#parry">パリィ成立</a>
+      <a href="#critical">致命の一撃</a>
+      <a href="#summary">まとめ</a>
+      <a href="#apply">自作ゲームへの応用</a>
+    </div>
+
+    <section class="analysis-section" id="parry">
+      <h2>1. パリィ対象攻撃：予備動作〜成立</h2>
+      <p class="section-lead">
+        この攻撃は、41Fから62Fまで長く見せた後、63Fから一気に薙ぎ払いへ移る。
+        78Fで武器が目前に迫り、80Fで接触。見てから反応するより、予備動作を読んで対応する攻撃になっている。
+      </p>
+
+      <div class="frame-list">
+        <article class="frame-card">
+          <div class="frame-image"><img src="../../assets/images/ds3_gundyr_parry/Gundyr_041F_WindupStart.png" alt="41F 武器を後ろへ引く"></div>
+          <div class="frame-text">
+            <div class="frame-no">041F</div>
+            <h3>武器を後ろへ引く</h3>
+            <p>プレイヤーが攻撃種を認識し始める予備動作。ここで「来る攻撃」を読ませる。</p>
+            <div class="frame-meta">Gundyr_041F_WindupStart.png</div>
+          </div>
+        </article>
+
+        <article class="frame-card">
+          <div class="frame-image"><img src="../../assets/images/ds3_gundyr_parry/Gundyr_062F_WindupPeak.png" alt="62F 溜めの頂点"></div>
+          <div class="frame-text">
+            <div class="frame-no">062F</div>
+            <h3>溜めの頂点</h3>
+            <p>攻撃前に一度テンポを止める。早すぎる回避やパリィを誘うディレイとして機能している。</p>
+            <div class="frame-meta">Gundyr_062F_WindupPeak.png</div>
+          </div>
+        </article>
+
+        <article class="frame-card">
+          <div class="frame-image"><img src="../../assets/images/ds3_gundyr_parry/Gundyr_078F_ThreatFrame.png" alt="78F 武器が目前へ到達"></div>
+          <div class="frame-text">
+            <div class="frame-no">078F</div>
+            <h3>武器が目前へ到達</h3>
+            <p>危険を強く認識する瞬間。ここから接触までは約2Fで、最終反応の猶予はかなり短い。</p>
+            <div class="frame-meta">Gundyr_078F_ThreatFrame.png</div>
+          </div>
+        </article>
+
+        <article class="frame-card">
+          <div class="frame-image"><img src="../../assets/images/ds3_gundyr_parry/Gundyr_080F_WeaponContact.png" alt="80F 武器接触"></div>
+          <div class="frame-text">
+            <div class="frame-no">080F</div>
+            <h3>武器接触</h3>
+            <p>敵の武器がプレイヤーに重なる。パリィ成立判断の中心になるフレーム。</p>
+            <div class="frame-meta">Gundyr_080F_WeaponContact.png</div>
+          </div>
+        </article>
+
+        <article class="frame-card">
+          <div class="frame-image"><img src="../../assets/images/ds3_gundyr_parry/Gundyr_085F_ParryVFX.png" alt="85F パリィVFX"></div>
+          <div class="frame-text">
+            <div class="frame-no">085F</div>
+            <h3>パリィVFX</h3>
+            <p>接触から約5F後に成功演出が発生。プレイヤーに「成功した」と確信させる。</p>
+            <div class="frame-meta">Gundyr_085F_ParryVFX.png</div>
+          </div>
+        </article>
+
+        <article class="frame-card">
+          <div class="frame-image"><img src="../../assets/images/ds3_gundyr_parry/Gundyr_092F_RecoilStart.png" alt="92F ボス弾かれ開始"></div>
+          <div class="frame-text">
+            <div class="frame-no">092F</div>
+            <h3>ボス弾かれ開始</h3>
+            <p>VFXの後に敵リアクションを見せる。成功感を一気に出さず、段階的に強めている。</p>
+            <div class="frame-meta">Gundyr_092F_RecoilStart.png</div>
+          </div>
+        </article>
+
+        <article class="frame-card">
+          <div class="frame-image"><img src="../../assets/images/ds3_gundyr_parry/Gundyr_135F_ControlReturn.png" alt="135F 操作復帰"></div>
+          <div class="frame-text">
+            <div class="frame-no">135F</div>
+            <h3>プレイヤー操作復帰</h3>
+            <p>成功直後にすぐ動かさず、敵が崩れる余韻を見せてから操作を返している。</p>
+            <div class="frame-meta">Gundyr_135F_ControlReturn.png</div>
+          </div>
+        </article>
+
+        <article class="frame-card">
+          <div class="frame-image"><img src="../../assets/images/ds3_gundyr_parry/Gundyr_150F_KneelState.png" alt="150F ボス膝つき"></div>
+          <div class="frame-text">
+            <div class="frame-no">150F</div>
+            <h3>ボス膝つき</h3>
+            <p>致命攻撃を狙える明確な報酬状態。成功したプレイヤーに次の行動を提示する。</p>
+            <div class="frame-meta">Gundyr_150F_KneelState.png</div>
+          </div>
+        </article>
+
+        <article class="frame-card">
+          <div class="frame-image"><img src="../../assets/images/ds3_gundyr_parry/Gundyr_157F_RiposteStart.png" alt="157F 致命開始"></div>
+          <div class="frame-text">
+            <div class="frame-no">157F</div>
+            <h3>致命開始</h3>
+            <p>パリィ成功から報酬演出へ移行。ここからプレイヤーの成功体験を大きく見せる時間が始まる。</p>
+            <div class="frame-meta">Gundyr_157F_RiposteStart.png</div>
+          </div>
+        </article>
+      </div>
+
+      <div class="note-box">
+        接触80F → パリィVFX85F → ボス弾かれ92F。成功を一瞬で処理せず、
+        「接触」「成功演出」「敵リアクション」を分けて見せることで、プレイヤーが出来事を理解しやすくなっている。
+      </div>
+    </section>
+
+    <section class="analysis-section" id="critical">
+      <h2>2. 致命の一撃：報酬演出の分解</h2>
+      <p class="section-lead">
+        致命攻撃は約450Fまで続く長い報酬演出だが、カメラ、VFX、ダメージ表示、盾の消失と復帰、ロックオン復帰が細かく挟まるため退屈しにくい。
+        成功報酬を「刺す」と「抜く」の二段構成で見せている。
+      </p>
+
+      <div class="frame-list">
+        <article class="frame-card">
+          <div class="frame-image"><img src="../../assets/images/ds3_gundyr_parry/critical_charge_start.png" alt="190F 剣を構えて溜め"></div>
+          <div class="frame-text"><div class="frame-no">190F</div><h3>剣を構えて溜め</h3><p>すぐ刺さず、約0.8秒の期待時間を作る。報酬演出の前振り。</p><div class="frame-meta">critical_charge_start.png</div></div>
+        </article>
+
+        <article class="frame-card">
+          <div class="frame-image"><img src="../../assets/images/ds3_gundyr_parry/critical_camera_zoom_begin.png" alt="196F カメラ急接近開始"></div>
+          <div class="frame-text"><div class="frame-no">196F</div><h3>カメラ急接近開始</h3><p>ヒット前にカメラで視線を寄せる。刺突の予告として機能する。</p><div class="frame-meta">critical_camera_zoom_begin.png</div></div>
+        </article>
+
+        <article class="frame-card">
+          <div class="frame-image"><img src="../../assets/images/ds3_gundyr_parry/critical_camera_dive_blur.png" alt="198F カメラ沈み込みとブラー"></div>
+          <div class="frame-text"><div class="frame-no">198〜201F</div><h3>カメラ沈み込み＋ブラー</h3><p>画面をぼかしながら沈ませ、刺突の速度と重さを事前に感じさせる。</p><div class="frame-meta">critical_camera_dive_blur.png</div></div>
+        </article>
+
+        <article class="frame-card">
+          <div class="frame-image"><img src="../../assets/images/ds3_gundyr_parry/critical_stab_impact.png" alt="205F 剣が刺さる"></div>
+          <div class="frame-text"><div class="frame-no">205〜207F</div><h3>剣が刺さる</h3><p>1回目のメインヒット。カメラ演出の後に衝撃を回収する。</p><div class="frame-meta">critical_stab_impact.png</div></div>
+        </article>
+
+        <article class="frame-card">
+          <div class="frame-image"><img src="../../assets/images/ds3_gundyr_parry/critical_damage_display_first.png" alt="209F 1回目ダメージ表示"></div>
+          <div class="frame-text"><div class="frame-no">209F</div><h3>1回目ダメージ表示</h3><p>刺突の直後に数値で成功を確認させる。ヒットの理解を補助するUI。</p><div class="frame-meta">critical_damage_display_first.png</div></div>
+        </article>
+
+        <article class="frame-card">
+          <div class="frame-image"><img src="../../assets/images/ds3_gundyr_parry/critical_blood_vfx_start.png" alt="213F 出血開始"></div>
+          <div class="frame-text"><div class="frame-no">213F</div><h3>1回目出血VFX開始</h3><p>ダメージ表示から約4F遅れて出血。情報を同時に出さず、順番に見せている。</p><div class="frame-meta">critical_blood_vfx_start.png</div></div>
+        </article>
+
+        <article class="frame-card">
+          <div class="frame-image"><img src="../../assets/images/ds3_gundyr_parry/critical_blood_vfx_spread.png" alt="257F 出血拡散"></div>
+          <div class="frame-text"><div class="frame-no">257F付近</div><h3>出血VFX拡散</h3><p>ヒット後もしばらく血が残り、刺突の余韻を画面に残す。</p><div class="frame-meta">critical_blood_vfx_spread.png</div></div>
+        </article>
+
+        <article class="frame-card">
+          <div class="frame-image"><img src="../../assets/images/ds3_gundyr_parry/critical_second_strike_prepare.png" alt="239F 追撃準備"></div>
+          <div class="frame-text"><div class="frame-no">239F</div><h3>盾消失・両手持ち準備</h3><p>盾を消し、両手で剣を扱う姿勢へ移行。2回目の衝撃への準備。</p><div class="frame-meta">critical_second_strike_prepare.png</div></div>
+        </article>
+
+        <article class="frame-card">
+          <div class="frame-image"><img src="../../assets/images/ds3_gundyr_parry/critical_sword_pull_start.png" alt="306F 剣を抜き始める"></div>
+          <div class="frame-text"><div class="frame-no">306F</div><h3>剣を抜き始める</h3><p>追撃の本動作開始。ボスもよろけ始め、二段目の報酬へ入る。</p><div class="frame-meta">critical_sword_pull_start.png</div></div>
+        </article>
+
+        <article class="frame-card">
+          <div class="frame-image"><img src="../../assets/images/ds3_gundyr_parry/critical_camera_shake_begin.png" alt="332F 画面揺れ開始"></div>
+          <div class="frame-text"><div class="frame-no">332F</div><h3>画面揺れ開始</h3><p>2回目の衝撃直前にカメラを揺らし、引き抜きの重さを予告する。</p><div class="frame-meta">critical_camera_shake_begin.png</div></div>
+        </article>
+
+        <article class="frame-card">
+          <div class="frame-image"><img src="../../assets/images/ds3_gundyr_parry/critical_damage_display_second.png" alt="335F 2回目ダメージ表示"></div>
+          <div class="frame-text"><div class="frame-no">335F</div><h3>2回目ダメージ表示</h3><p>剣を抜ききる前に追撃ダメージを表示。成立を先に伝え、直後の動きを強調する。</p><div class="frame-meta">critical_damage_display_second.png</div></div>
+        </article>
+
+        <article class="frame-card">
+          <div class="frame-image"><img src="../../assets/images/ds3_gundyr_parry/critical_sword_pull_impact.png" alt="341F 剣を引き抜く"></div>
+          <div class="frame-text"><div class="frame-no">341〜345F</div><h3>剣を勢いよく引き抜く</h3><p>プレイヤーの振り抜きに近い動きで、2回目の気持ちよさを作っている。</p><div class="frame-meta">critical_sword_pull_impact.png</div></div>
+        </article>
+
+        <article class="frame-card">
+          <div class="frame-image"><img src="../../assets/images/ds3_gundyr_parry/critical_boss_knockback.png" alt="343F ボスのけぞり"></div>
+          <div class="frame-text"><div class="frame-no">343〜400F</div><h3>ボスのけぞり</h3><p>ボスが後ろへ崩れ、カメラも追従する。ダメージの重さを敵リアクションで示す。</p><div class="frame-meta">critical_boss_knockback.png</div></div>
+        </article>
+
+        <article class="frame-card">
+          <div class="frame-image"><img src="../../assets/images/ds3_gundyr_parry/critical_blood_vfx_second.png" alt="348F 2回目出血VFX"></div>
+          <div class="frame-text"><div class="frame-no">348〜403F</div><h3>2回目出血VFX</h3><p>引き抜きに合わせて大きく血を出す。追撃の余韻を画面上に残す。</p><div class="frame-meta">critical_blood_vfx_second.png</div></div>
+        </article>
+
+        <article class="frame-card">
+          <div class="frame-image"><img src="../../assets/images/ds3_gundyr_parry/critical_shield_return.png" alt="416F 盾再装備"></div>
+          <div class="frame-text"><div class="frame-no">416F</div><h3>盾再装備</h3><p>演出用の特殊状態から通常戦闘状態へ戻る準備。</p><div class="frame-meta">critical_shield_return.png</div></div>
+        </article>
+
+        <article class="frame-card">
+          <div class="frame-image"><img src="../../assets/images/ds3_gundyr_parry/critical_lockon_recover.png" alt="432F ロックオン復帰"></div>
+          <div class="frame-text"><div class="frame-no">432F</div><h3>ロックオンカメラ復帰開始</h3><p>演出カメラから戦闘カメラへ戻し、次の操作に備えさせる。</p><div class="frame-meta">critical_lockon_recover.png</div></div>
+        </article>
+
+        <article class="frame-card">
+          <div class="frame-image"><img src="../../assets/images/ds3_gundyr_parry/critical_control_return.png" alt="450F 操作可能"></div>
+          <div class="frame-text"><div class="frame-no">450F</div><h3>操作可能・カメラ復帰完了</h3><p>プレイヤーへ操作権を返す。報酬演出から通常戦闘へ戻る接続点。</p><div class="frame-meta">critical_control_return.png</div></div>
+        </article>
+
+        <article class="frame-card">
+          <div class="frame-image"><img src="../../assets/images/ds3_gundyr_parry/critical_boss_standup_complete.png" alt="500F ボス立ち上がり完了"></div>
+          <div class="frame-text"><div class="frame-no">500F</div><h3>ボス立ち上がり完了</h3><p>致命攻撃の報酬時間が終わり、ボスが再び戦闘可能状態へ戻る。</p><div class="frame-meta">critical_boss_standup_complete.png</div></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="analysis-section" id="summary">
+      <h2>3. まとめ</h2>
+      <div class="summary-panel">
+        <p>
+          英雄グンダのパリィ成立から致命攻撃までの流れは、成功判定、VFX、敵リアクション、カメラ、ダメージUIを細かく分けて見せている。
+          特に、接触80FからパリィVFX85F、敵リアクション92Fへと段階的に進むことで、プレイヤーは「受け止めた」「成功した」「敵が崩れた」を順番に認識できる。
+        </p>
+        <p>
+          致命攻撃では、190Fから溜め、196Fからカメラ寄り、205F付近で刺突、209Fでダメージ表示、213Fから出血VFXと続く。
+          さらに、239Fから両手持ちに移行し、306F以降で剣を引き抜く二段目の報酬を作っている。
+          操作不能時間は長いが、数十フレームごとに新しい視覚情報が出るため、退屈になりにくい。
+        </p>
+      </div>
+
+      <table class="compare-table">
+        <tr><th>観点</th><th>分析結果</th></tr>
+        <tr><td>予備動作</td><td>41F〜62Fで攻撃を読ませ、63F以降に一気に加速する。</td></tr>
+        <tr><td>成功演出</td><td>接触、VFX、敵リアクションを数フレームずらして出す。</td></tr>
+        <tr><td>報酬演出</td><td>刺す、抜くの二段構成でパリィ成功の価値を大きく見せる。</td></tr>
+        <tr><td>カメラ</td><td>ヒット前のズーム、沈み込み、ブラー、画面揺れで衝撃を補強する。</td></tr>
+        <tr><td>操作復帰</td><td>演出カメラからロックオンカメラへ段階的に戻し、450Fで操作可能にする。</td></tr>
+      </table>
+    </section>
+
+    <section class="analysis-section" id="apply">
+      <h2>4. 自作ゲームへの応用</h2>
+      <div class="summary-panel">
+        <p>
+          自作アクションで受け流しやパリィに近いシステムを作る場合、成功した瞬間にすべてを同時に出すのではなく、
+          「接触 → 成功VFX → 敵リアクション → 反撃受付 → ダメージ → よろけ」の順で出すと、プレイヤーが成功を理解しやすい。
+        </p>
+        <ul>
+          <li>敵攻撃接触から3〜5F後に成功VFXを出す</li>
+          <li>さらに数F後に敵の姿勢崩しを入れる</li>
+          <li>反撃前に短いカメラ寄りやヒットストップを入れる</li>
+          <li>ダメージ表示とVFXを少しずらし、情報を読みやすくする</li>
+          <li>長い演出を入れる場合は、数十Fごとに新しい変化を作る</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    DARK SOULS III / Champion Gundyr Frame Analysis
+  </footer>
+  <script src="../../assets/js/main.js"></script>
+</body>
+</html>
