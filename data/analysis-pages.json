@@ -1,0 +1,16 @@
+{
+  "pages": [
+    {
+      "game": "DARK SOULS III",
+      "title": "英雄グンダ：パリィ成立〜致命の一撃",
+      "path": "pages/ds3/gundyr-parry.html",
+      "tags": [
+        "Parry",
+        "Riposte",
+        "VFX",
+        "Camera",
+        "Reward Design"
+      ]
+    }
+  ]
+}
